@@ -53,7 +53,7 @@ public class PoetryStorage : IPoetryStorage
         throw new NotImplementedException();
     }
 
-    public Task<Poetry> GetPoetryAsync(int id)
+    public async Task<Poetry> GetPoetryAsync(int id)
     {
         throw new NotImplementedException();
     }
