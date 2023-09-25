@@ -48,12 +48,12 @@ public class PoetryStorage : IPoetryStorage
     public async Task InitializeAsync() =>await Connection.CreateTableAsync<Poetry>();
   
 
-    public async Task SavePeotryAsync(Poetry postry)
+    public Task SavePoetryAsync(Poetry poetry)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<Poetry> GetPoetryAsync(int id)
+    public Task<Poetry> GetPoetryAsync(int id)
     {
         throw new NotImplementedException();
     }
