@@ -1,4 +1,5 @@
 ﻿using HelleNetMaui.Data;
+using HelleNetMaui.Services;
 using Microsoft.Extensions.Logging;
 
 namespace HelleNetMaui
@@ -16,6 +17,7 @@ namespace HelleNetMaui
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddBootstrapBlazor();
 
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
@@ -23,7 +25,8 @@ namespace HelleNetMaui
 #endif
 
             builder.Services.AddSingleton<WeatherForecastService>();
-
+            // 服务注入
+            builder.Services.AddScoped<IPoetryStorage, PoetryStorage>();
             return builder.Build();
         }
     }

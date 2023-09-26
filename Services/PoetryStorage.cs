@@ -14,7 +14,7 @@ public class PoetryStorage : IPoetryStorage
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),DbName);
     
     private SQLiteAsyncConnection _connection;
-
+        
     
     private SQLiteAsyncConnection Connection => _connection 
         ??= new SQLiteAsyncConnection(PoetryDbPath);
@@ -45,22 +45,20 @@ public class PoetryStorage : IPoetryStorage
         return base.ToString();
     }
 
-    public async Task InitializeAsync() =>await Connection.CreateTableAsync<Poetry>();
-  
+    public async Task InitializeAsync() 
+        =>await Connection.CreateTableAsync<Poetry>();
 
-    public Task SavePoetryAsync(Poetry poetry)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task<Poetry> GetPoetryAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task SavePoetryAsync(Poetry poetry) =>
+        await Connection.InsertAsync(poetry);
 
-    public Task<IEnumerable<Poetry>> SearchByNameAsync(string name)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Poetry> GetPoetryAsync(int id) =>
+        await Connection.Table<Poetry>()
+            .FirstOrDefaultAsync(p => p.Id == id);
+
+    public async Task<IEnumerable<Poetry>> SearchByNameAsync(string name) =>
+        await Connection.Table<Poetry>()
+            .Where(p => p.Name.Contains(name))
+            .ToListAsync();
 
 }

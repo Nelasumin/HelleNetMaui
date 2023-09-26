@@ -1,7 +1,55 @@
 ﻿@page "/"
+@using HelleNetMaui.Services
+@inject IPoetryStorage _poetryStorage
+
+
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<Button OnClick="InitializeAsync">
+    init Base !
+</Button>
+
+<BootstrapInputGroup>
+    <BootstrapInputGroupLabel DisplayText="题目"></BootstrapInputGroupLabel>
+    <BootstrapInput @bind-Value="_name"></BootstrapInput>
+</BootstrapInputGroup>
+
+<BootstrapInputGroup>
+    <BootstrapInputGroupLabel DisplayText="内容"></BootstrapInputGroupLabel>
+    <BootstrapInput @bind-Value="_content"></BootstrapInput>
+</BootstrapInputGroup>
+
+<div class="col-6 col-sm-4 col-md-3 col-lg-auto">
+    <Button ButtonStyle="ButtonStyle.Round" Color="Color.Success" OnClick="SaveAsync">成功按钮</Button>
+</div>
+
+<BootstrapInputGroup>
+    <BootstrapInputGroupLabel DisplayText="条件"></BootstrapInputGroupLabel>
+    <BootstrapInput @bind-Value="_query"></BootstrapInput>
+</BootstrapInputGroup>
+
+<Button Text="搜索"
+        OnClick="QueryAsync">
+</Button>
+
+<hr/>
+
+@foreach (var poetry in _poetries) {
+    <Card>
+        <BodyTemplate>
+            <div>@poetry.Name</div>
+            <div>@poetry.Content</div>
+        </BodyTemplate>
+    </Card>
+}
+
+
+
+
+
+

@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>HelleNetMaui</title>
     <base href="/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <!-- 需引用 BootstrapBlazor.FontAwesome 包 !-->
+    <link href="_content/BootstrapBlazor.FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet" />
     <link href="HelleNetMaui.styles.css" rel="stylesheet" />
 </head>
 
 <body>
-
+    
     <div class="status-bar-safe-area"></div>
 
     <div id="app">Loading...</div>
@@ -22,6 +24,8 @@
         <a class="dismiss">🗙</a>
     </div>
 
+    <script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js"></script>
+    
     <script src="_framework/blazor.webview.js" autostart="false"></script>
 
 </body>
